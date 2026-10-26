@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fawaz Bello – ML Engineer and Researcher</title>
+<meta name="description" content="Fawaz Bello is an ML engineer and researcher and a fifth-year medical student, building explainable, deployable machine learning systems for healthcare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap">
+  <a class="name" href="/">Fawaz Bello</a>
+  <nav aria-label="Main"><a href="#projects">Projects</a><a href="research.html">Research</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <h1>Machine learning, built for the people who have to use it.</h1>
+    <div class="intro">
+      <p>I’m Fawaz, an ML engineer and researcher, and a fifth-year medical student at the University of Ibadan. I build machine learning systems focused on explainability, deployment, and real-world decision-making, particularly in healthcare.</p>
+      <p>Combining clinical training with applied AI, I work on building reliable models, understanding their limitations, and translating their outputs into practical tools that support better decisions.</p>
+    </div>
+  </div>
+  <img src="assets/fawaz.jpg" alt="Fawaz Bello" width="176" height="176">
+</div>
+
+<section id="projects">
+  <div class="wrap projects-head">
+    <h2>Projects</h2>
+    <p>HyperSense is my independent project. The other three were built in teams during the TAG AI Engineering Bootcamp, Cohort 1.</p>
+  </div>
+
+  <div class="featured"><div class="wrap-in">
+    <article class="project">
+      <div>
+        <h3>HyperSense</h3>
+        <p class="meta">Independent project, built end to end.<br>Live app (v1.1). Abstract submitted; manuscript in preparation.</p>
+      </div>
+      <div class="body">
+        <p>An explainable machine learning screener for hypertension risk in West Africa. From non-invasive inputs (age, sex, residence, education, tobacco use, height and weight), the app returns a High or Low risk tier, a probability, a SHAP explanation of the factors behind it, and a preventive recommendation. It is a screening tool, not a diagnostic one. I built the data harmonisation, modelling, explainability and deployment, then tested whether the model holds up in Nigeria.</p>
+        <dl>
+          <div><dt>Model</dt><dd>XGBoost on Ghana DHS 2014 (7,844 adults), survey-weighted, labelled from measured blood pressure only. ROC-AUC about 0.79, with the threshold chosen on out-of-fold predictions to avoid test-set leakage.</dd></div>
+          <div><dt>Nigerian external validation</dt><dd>Applied unchanged to 4,089 Nigerian adults, AUC fell from 0.792 to 0.747 and specificity from 0.616 to 0.448, with marked overprediction.</dd></div>
+          <div><dt>Regional adaptation</dt><dd>Retraining on a pooled Ghana–Nigeria cohort (11,933 adults) gave AUC 0.803, sensitivity 0.759, specificity 0.698 and near-ideal calibration. Adding 12 clinical predictors improved discrimination only modestly.</dd></div>
+          <div><dt>Limitations</dt><dd>The deployed model is Ghana-trained; the Nigerian adaptation is not in the app yet. The design is cross-sectional, so it estimates current likelihood, not future events.</dd></div>
+        </dl>
+        <p class="links"><a href="https://hypersense.streamlit.app/">Live app</a><a href="https://github.com/fawaz-b/HyperSense">Source code</a></p>
+      </div>
+    </article>
+  </div></div>
+
+  <div class="wrap light-list">
+    <article class="project">
+      <div>
+        <h3>Potato Leaf Disease Inspector</h3>
+        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1 (Team Tuner, six members).<br>Live MVP, scoped to potato leaves.</p>
+      </div>
+      <div class="body">
+        <p>A web app that reports whether an uploaded potato leaf shows early blight, late blight or is healthy, with a confidence score, a plain-language explanation and a recommendation. A three-class classifier always picks a class, even for a cup or a tomato leaf, so the team added a second model that first checks the image is a potato leaf and rejects it if not.</p>
+        <dl>
+          <div><dt>Two-stage design</dt><dd>A fine-tuned ResNet18 classifier sits behind a binary potato-or-not detector. CLIP prompts and embedding similarity were tried first and abandoned because they could not separate similar leaves.</dd></div>
+          <div><dt>Results</dt><dd>The classifier got all 323 held-out images right, with healthy recall tracked because only 152 of 2,152 images were healthy. The detector reached 97.01% on 234 held-out images, accepting 7 of 127 non-potato images.</dd></div>
+          <div><dt>Limitations</dt><dd>The dataset results do not guarantee performance on arbitrary photos. In external testing a mango leaf was wrongly accepted, so the UI asks for potato leaves only.</dd></div>
+        </dl>
+        <p class="links"><a href="https://inspect-feaf-ai.streamlit.app/">Live app</a><a href="https://github.com/tag-ecosystemai/c1-tuners-project-1/">Source code</a></p>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <h3>Kredt</h3>
+        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1 (five members).<br>Deployed prototype; decision support, not a lending system.</p>
+      </div>
+      <div class="body">
+        <p>AI-assisted credit intelligence for loan application review, built on the idea that the AI investigates and the analyst decides. A LangGraph pipeline validates an application, retrieves relevant credit policy, runs financial analysis and a credit-risk model, and assembles a report that an analyst can inspect before recording their own assessment.</p>
+        <dl>
+          <div><dt>Evidence you can audit</dt><dd>Five financial metrics are returned with the calculation behind each, alongside policy findings, a risk score and band, document views and an audit-oriented view.</dd></div>
+          <div><dt>Risk model</dt><dd>HistGradientBoosting beat a logistic baseline on Home Credit data (ROC-AUC 0.648 against 0.639). This reflects that dataset only, not Kredt’s intended borrowers.</dd></div>
+          <div><dt>Engineering</dt><dd>FastAPI backend in Docker, deployed to Azure Container Apps through GitHub Actions, with the frontend on Vercel. Some components are mock implementations and no production claims are made.</dd></div>
+        </dl>
+        <p class="links"><a href="https://c1-tuners-project-3-frontend.vercel.app/">Live demo</a><a href="https://github.com/tag-ecosystemai/c1-tuners-project-3/">Source code</a></p>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <h3>Local Study Assistant</h3>
+        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1 (six members).<br>Runs locally; no hosted demo by design.</p>
+      </div>
+      <div class="body">
+        <p>A study tool that answers questions from a student’s own course materials. PDFs and audio recordings are ingested, chunked, embedded and stored in ChromaDB, and a locally run Llama 3.2 3B answers using only the selected course’s content, with source references. No cloud model API is involved.</p>
+        <dl>
+          <div><dt>Local-first RAG</dt><dd>Whisper transcription, Nomic embeddings and the language model all run through local tooling, so the core workflow should work offline once models are downloaded.</dd></div>
+          <div><dt>Course-scoped retrieval</dt><dd>Retrieval is limited to one course at a time, which keeps other courses’ materials out of the answer. FastAPI backend, Next.js and TypeScript frontend.</dd></div>
+        </dl>
+        <p class="links"><a href="https://github.com/tag-ecosystemai/c1-tuners-project-2">Source code</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="page-section" id="about">
+  <div class="wrap prose">
+    <h2>About</h2>
+    <p>I’m a fifth-year medical student at the University of Ibadan working at the intersection of medicine, machine learning, and applied AI.</p>
+    <p>My clinical training shapes how I approach technical problems. Beyond predictive performance, I’m interested in model interpretability, robustness across populations, and the implications of using AI to inform consequential clinical decisions.</p>
+    <p>My work and research interests span predictive modelling, explainable AI, model evaluation, and the development of deployable ML applications. I’m equally interested in computer vision, particularly medical imaging, and the potential of deep learning to extract clinically meaningful insights from medical images. More broadly, I’m interested in clinical research, cardiovascular risk assessment, and translating AI methods into practical, responsible healthcare applications.</p>
+    <p>Longer term, I hope to pursue a physician-scientist career that brings clinical practice, research, and engineering together.</p>
+  </div>
+</section>
+
+<section class="page-section" id="contact">
+  <div class="wrap">
+    <h2 style="margin-bottom:24px">Contact</h2>
+    <a class="big" href="mailto:fawaz.a.bello@gmail.com">fawaz.a.bello@gmail.com</a>
+    <p class="links"><a href="https://www.linkedin.com/in/fawazbello/">LinkedIn</a><a href="https://github.com/fawaz-b">GitHub</a><a href="https://orcid.org/0009-0002-1455-0057">ORCID</a></p>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 Fawaz Bello</div></footer>
+</body>
+</html>
