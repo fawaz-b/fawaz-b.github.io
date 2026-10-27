@@ -18,8 +18,8 @@ h1{font-size:clamp(2.5rem,6vw,4.2rem);max-width:15em}
 h2{font-size:clamp(1.9rem,3.6vw,2.6rem)}
 h3{font-size:clamp(1.8rem,3.2vw,2.3rem)}
 p{margin:0}
-.hero{display:grid;grid-template-columns:1fr 176px;gap:56px;align-items:start;padding-top:56px;padding-bottom:88px}
-.hero img{width:176px;height:176px;border-radius:50%;object-fit:cover;display:block}
+.hero{display:grid;grid-template-columns:1fr 208px;gap:56px;align-items:start;padding-top:56px;padding-bottom:88px}
+.hero img{width:208px;height:208px;border-radius:50%;object-fit:cover;display:block}
 .hero>*{animation:in .7s ease both}
 @keyframes in{from{opacity:0;transform:translateY(6px)}}
 .intro{max-width:34em;margin-top:32px;color:var(--mute);font-size:1.08rem}
@@ -42,9 +42,11 @@ p{margin:0}
 .prose h2{margin-bottom:10px}
 .big{font:300 clamp(1.5rem,4.4vw,2.5rem)/1.2 Newsreader,Georgia,serif;word-break:break-word}
 footer{padding:36px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid var(--rule)}
+.page-section.band.dark{border-top:0}
+footer.dark{background:var(--night);color:var(--night-mute);border-top:1px solid var(--night-rule)}
 @media(max-width:780px){
 .hero{grid-template-columns:1fr;gap:24px;padding-top:24px;padding-bottom:64px}
-.hero img{order:-1;width:92px;height:92px}
+.hero img{order:-1;width:108px;height:108px}
 .intro{margin-top:24px}
 .project{grid-template-columns:1fr;gap:20px;padding:56px 0}
 .page-section{padding:56px 0}
