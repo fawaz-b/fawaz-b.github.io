@@ -31,14 +31,13 @@
 <section id="projects">
   <div class="wrap projects-head">
     <h2>Projects</h2>
-    <p>HyperSense is my independent project. The other three were built in teams during the TAG AI Engineering Bootcamp, Cohort 1.</p>
   </div>
 
-  <div class="featured"><div class="wrap-in">
+  <div class="band dark"><div class="wrap">
     <article class="project">
       <div>
         <h3>HyperSense</h3>
-        <p class="meta">Independent project, built end to end.<br>Live app (v1.1). Abstract submitted; manuscript in preparation.</p>
+        <p class="meta">Independent project, built end to end.<br>Live app (v1.1).</p>
       </div>
       <div class="body">
         <p>An explainable machine learning screener for hypertension risk in West Africa. From non-invasive inputs (age, sex, residence, education, tobacco use, height and weight), the app returns a High or Low risk tier, a probability, a SHAP explanation of the factors behind it, and a preventive recommendation. It is a screening tool, not a diagnostic one. I built the data harmonisation, modelling, explainability and deployment, then tested whether the model holds up in Nigeria.</p>
@@ -46,34 +45,34 @@
           <div><dt>Model</dt><dd>XGBoost on Ghana DHS 2014 (7,844 adults), survey-weighted, labelled from measured blood pressure only. ROC-AUC about 0.79, with the threshold chosen on out-of-fold predictions to avoid test-set leakage.</dd></div>
           <div><dt>Nigerian external validation</dt><dd>Applied unchanged to 4,089 Nigerian adults, AUC fell from 0.792 to 0.747 and specificity from 0.616 to 0.448, with marked overprediction.</dd></div>
           <div><dt>Regional adaptation</dt><dd>Retraining on a pooled Ghana–Nigeria cohort (11,933 adults) gave AUC 0.803, sensitivity 0.759, specificity 0.698 and near-ideal calibration. Adding 12 clinical predictors improved discrimination only modestly.</dd></div>
-          <div><dt>Limitations</dt><dd>The deployed model is Ghana-trained; the Nigerian adaptation is not in the app yet. The design is cross-sectional, so it estimates current likelihood, not future events.</dd></div>
         </dl>
         <p class="links"><a href="https://hypersense.streamlit.app/">Live app</a><a href="https://github.com/fawaz-b/HyperSense">Source code</a></p>
       </div>
     </article>
   </div></div>
 
-  <div class="wrap light-list">
+  <div class="band"><div class="wrap">
     <article class="project">
       <div>
         <h3>Potato Leaf Disease Inspector</h3>
-        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1 (Team Tuner, six members).<br>Live MVP, scoped to potato leaves.</p>
+        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1<br>Live MVP, scoped to potato leaves.</p>
       </div>
       <div class="body">
-        <p>A web app that reports whether an uploaded potato leaf shows early blight, late blight or is healthy, with a confidence score, a plain-language explanation and a recommendation. A three-class classifier always picks a class, even for a cup or a tomato leaf, so the team added a second model that first checks the image is a potato leaf and rejects it if not.</p>
+        <p>A web app that reports whether an uploaded potato leaf shows early blight, late blight or is healthy, with a confidence score, a plain-language explanation and a recommendation. A three-class classifier always picks a class, even for a cup or a tomato leaf, so we added a second model that first checks the image is a potato leaf and rejects it if not.</p>
         <dl>
           <div><dt>Two-stage design</dt><dd>A fine-tuned ResNet18 classifier sits behind a binary potato-or-not detector. CLIP prompts and embedding similarity were tried first and abandoned because they could not separate similar leaves.</dd></div>
           <div><dt>Results</dt><dd>The classifier got all 323 held-out images right, with healthy recall tracked because only 152 of 2,152 images were healthy. The detector reached 97.01% on 234 held-out images, accepting 7 of 127 non-potato images.</dd></div>
-          <div><dt>Limitations</dt><dd>The dataset results do not guarantee performance on arbitrary photos. In external testing a mango leaf was wrongly accepted, so the UI asks for potato leaves only.</dd></div>
         </dl>
         <p class="links"><a href="https://inspect-feaf-ai.streamlit.app/">Live app</a><a href="https://github.com/tag-ecosystemai/c1-tuners-project-1/">Source code</a></p>
       </div>
     </article>
+  </div></div>
 
+  <div class="band dark"><div class="wrap">
     <article class="project">
       <div>
         <h3>Kredt</h3>
-        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1 (five members).<br>Deployed prototype; decision support, not a lending system.</p>
+        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1<br>Deployed prototype.</p>
       </div>
       <div class="body">
         <p>AI-assisted credit intelligence for loan application review, built on the idea that the AI investigates and the analyst decides. A LangGraph pipeline validates an application, retrieves relevant credit policy, runs financial analysis and a credit-risk model, and assembles a report that an analyst can inspect before recording their own assessment.</p>
@@ -85,11 +84,13 @@
         <p class="links"><a href="https://c1-tuners-project-3-frontend.vercel.app/">Live demo</a><a href="https://github.com/tag-ecosystemai/c1-tuners-project-3/">Source code</a></p>
       </div>
     </article>
+  </div></div>
 
+  <div class="band"><div class="wrap">
     <article class="project">
       <div>
         <h3>Local Study Assistant</h3>
-        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1 (six members).<br>Runs locally; no hosted demo by design.</p>
+        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1.<br>Runs locally.</p>
       </div>
       <div class="body">
         <p>A study tool that answers questions from a student’s own course materials. PDFs and audio recordings are ingested, chunked, embedded and stored in ChromaDB, and a locally run Llama 3.2 3B answers using only the selected course’s content, with source references. No cloud model API is involved.</p>
@@ -100,7 +101,7 @@
         <p class="links"><a href="https://github.com/tag-ecosystemai/c1-tuners-project-2">Source code</a></p>
       </div>
     </article>
-  </div>
+  </div></div>
 </section>
 
 <section class="page-section" id="about">
