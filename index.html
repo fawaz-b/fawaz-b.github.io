@@ -3,8 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fawaz Bello – ML Engineer and Researcher</title>
-<meta name="description" content="Fawaz Bello is an ML engineer and researcher and a fifth-year medical student, building explainable, deployable machine learning systems for healthcare.">
+<title>Fawaz Bello – Machine Learning Engineer &amp; Researcher</title>
+<meta name="description" content="Fawaz Bello is a machine learning engineer and researcher building ML systems and AI applications, with interests in computer vision, model evaluation, reliable deployment and healthcare AI.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fawaz Bello – Machine Learning Engineer &amp; Researcher">
+<meta property="og:description" content="Fawaz Bello is a machine learning engineer and researcher building ML systems and AI applications, with interests in computer vision, model evaluation, reliable deployment and healthcare AI.">
+<meta property="og:url" content="https://fawaz-b.github.io/">
+<meta property="og:image" content="https://fawaz-b.github.io/assets/fawaz.jpg">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&display=swap">
@@ -21,10 +27,11 @@
 <main>
 <div class="wrap hero">
   <div>
+    <p class="role">Machine Learning Engineer &amp; Researcher</p>
     <h1>Machine learning, built for the people who have to use it.</h1>
     <div class="intro">
-      <p>I’m Fawaz, an ML engineer and researcher, and a fifth-year medical student at the University of Ibadan. I build machine learning systems focused on explainability, deployment, and real-world decision-making, particularly in healthcare.</p>
-      <p>Combining clinical training with applied AI, I work on building reliable models, understanding their limitations, and translating their outputs into practical tools that support better decisions.</p>
+      <p>Building machine learning systems and AI applications, with interests in model evaluation, reliable deployment and healthcare applications.</p>
+      <p class="interests">Applied Machine Learning · Computer Vision · AI Engineering · Model Evaluation &amp; Generalisability</p>
     </div>
   </div>
   <img src="assets/fawaz.jpg" alt="Fawaz Bello" width="208" height="208">
@@ -38,8 +45,26 @@
   <div class="band dark"><div class="wrap">
     <article class="project">
       <div>
+        <h3>ModelAudit</h3>
+        <p class="meta">Individual capstone, TAG AI Engineering Bootcamp, Cohort 1<br>2026. Live research preview.</p>
+      </div>
+      <div class="body">
+        <p>An evidence-grounded tool for appraising studies that develop clinical prediction models. Upload a PDF and it retrieves relevant passages, proposes structured findings against selected TRIPOD+AI and PROBAST+AI criteria, and links each finding to quoted evidence for a human reviewer to check. I designed and built it end to end.</p>
+        <dl>
+          <div><dt>Pipeline</dt><dd>PDF text extraction, BM25 and semantic retrieval combined with Reciprocal Rank Fusion, LLM-assisted assessment per item, and deterministic rules for TRIPOD+AI item categories rather than leaving them to the model.</dd></div>
+          <div><dt>Scope and limits</dt><dd>Covers 14 selected TRIPOD+AI items and 8 PROBAST+AI questions, not either framework in full, and gives no overall risk-of-bias judgement. Quotation checks confirm the text exists in the paper, not that it supports the finding.</dd></div>
+          <div><dt>Engineering</dt><dd>FastAPI backend in Docker on Azure Container Apps, built with GitHub Actions. React and TypeScript frontend on Vercel.</dd></div>
+        </dl>
+        <p class="links"><a href="https://model-audit-alpha.vercel.app/">Live app</a><a href="https://github.com/fawaz-b/ModelAudit">Source code</a></p>
+      </div>
+    </article>
+  </div></div>
+
+  <div class="band"><div class="wrap">
+    <article class="project">
+      <div>
         <h3>HyperSense</h3>
-        <p class="meta">Independent project, built end to end.<br>Live app (v1.1).</p>
+        <p class="meta">Independent project, full technical ownership<br>2026. Deployed prototype (v1.1).</p>
       </div>
       <div class="body">
         <p>An explainable machine learning screener for hypertension risk in West Africa. From non-invasive inputs (age, sex, residence, education, tobacco use, height and weight), the app returns a High or Low risk tier, a probability, a SHAP explanation of the factors behind it, and a preventive recommendation. It is a screening tool, not a diagnostic one. I built the data harmonisation, modelling, explainability and deployment, then tested whether the model holds up in Nigeria.</p>
@@ -53,54 +78,19 @@
     </article>
   </div></div>
 
-  <div class="band"><div class="wrap">
-    <article class="project">
-      <div>
-        <h3>Potato Leaf Disease Inspector</h3>
-        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1<br>Live MVP, scoped to potato leaves.</p>
-      </div>
-      <div class="body">
-        <p>A web app that reports whether an uploaded potato leaf shows early blight, late blight or is healthy, with a confidence score, a plain-language explanation and a recommendation. A three-class classifier always picks a class, even for a cup or a tomato leaf, so we added a second model that first checks the image is a potato leaf and rejects it if not.</p>
-        <dl>
-          <div><dt>Two-stage design</dt><dd>A fine-tuned ResNet18 classifier sits behind a binary potato-or-not detector. CLIP prompts and embedding similarity were tried first and abandoned because they could not separate similar leaves.</dd></div>
-          <div><dt>Results</dt><dd>The classifier got all 323 held-out images right, with healthy recall tracked because only 152 of 2,152 images were healthy. The detector reached 97.01% on 234 held-out images, accepting 7 of 127 non-potato images.</dd></div>
-        </dl>
-        <p class="links"><a href="https://inspect-feaf-ai.streamlit.app/">Live app</a><a href="https://github.com/tag-ecosystemai/c1-tuners-project-1/">Source code</a></p>
-      </div>
-    </article>
-  </div></div>
-
   <div class="band dark"><div class="wrap">
     <article class="project">
       <div>
-        <h3>Kredt</h3>
-        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1<br>Deployed prototype.</p>
+        <h3>Potato Leaf Detection &amp; Disease Classification System</h3>
+        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1<br>Backend engineering. 2026. Deployed prototype.</p>
       </div>
       <div class="body">
-        <p>AI-assisted credit intelligence for loan application review, built on the idea that the AI investigates and the analyst decides. A LangGraph pipeline validates an application, retrieves relevant credit policy, runs financial analysis and a credit-risk model, and assembles a report that an analyst can inspect before recording their own assessment.</p>
+        <p>A two-stage computer-vision app. A detector first checks that an uploaded image is a potato leaf, then a classifier labels it healthy, early blight or late blight, with a confidence score and a plain-language explanation. The detector gates the input so the classifier does not force a disease label onto a cup or a tomato leaf.</p>
+        <p class="contrib"><span>My contribution</span>Built the FastAPI backend: image-upload validation, the sequential detector-then-classifier pipeline and structured prediction responses. I also contributed to dataset work. Model training and the frontend were part of the wider team effort.</p>
         <dl>
-          <div><dt>Evidence you can audit</dt><dd>Five financial metrics are returned with the calculation behind each, alongside policy findings, a risk score and band, document views and an audit-oriented view.</dd></div>
-          <div><dt>Risk model</dt><dd>HistGradientBoosting beat a logistic baseline on Home Credit data (ROC-AUC 0.648 against 0.639). This reflects that dataset only, not Kredt’s intended borrowers.</dd></div>
-          <div><dt>Engineering</dt><dd>FastAPI backend in Docker, deployed to Azure Container Apps through GitHub Actions, with the frontend on Vercel. Some components are mock implementations and no production claims are made.</dd></div>
+          <div><dt>Held-out results</dt><dd>The classifier got all 323 held-out images right, but only 152 of 2,152 images were healthy, so treat this as a sanity check, not field performance. The detector reached 97.01% on 234 held-out images, accepting 7 of 127 non-potato images.</dd></div>
         </dl>
-        <p class="links"><a href="https://c1-tuners-project-3-frontend.vercel.app/">Live demo</a><a href="https://github.com/tag-ecosystemai/c1-tuners-project-3/">Source code</a></p>
-      </div>
-    </article>
-  </div></div>
-
-  <div class="band"><div class="wrap">
-    <article class="project">
-      <div>
-        <h3>Local Study Assistant</h3>
-        <p class="meta">Team project, TAG AI Engineering Bootcamp, Cohort 1.<br>Runs locally.</p>
-      </div>
-      <div class="body">
-        <p>A study tool that answers questions from a student’s own course materials. PDFs and audio recordings are ingested, chunked, embedded and stored in ChromaDB, and a locally run Llama 3.2 3B answers using only the selected course’s content, with source references. No cloud model API is involved.</p>
-        <dl>
-          <div><dt>Local-first RAG</dt><dd>Whisper transcription, Nomic embeddings and the language model all run through local tooling, so the core workflow should work offline once models are downloaded.</dd></div>
-          <div><dt>Course-scoped retrieval</dt><dd>Retrieval is limited to one course at a time, which keeps other courses’ materials out of the answer. FastAPI backend, Next.js and TypeScript frontend.</dd></div>
-        </dl>
-        <p class="links"><a href="https://github.com/tag-ecosystemai/c1-tuners-project-2">Source code</a></p>
+        <p class="links"><a href="https://inspect-feaf-ai.streamlit.app/">Live app</a><a href="https://github.com/tag-ecosystemai/c1-tuners-project-1/">Source code</a></p>
       </div>
     </article>
   </div></div>
@@ -109,10 +99,9 @@
 <section class="page-section" id="about">
   <div class="wrap prose">
     <h2>About</h2>
-    <p>I’m a fifth-year medical student at the University of Ibadan working at the intersection of medicine, machine learning, and applied AI.</p>
-    <p>My clinical training shapes how I approach technical problems. Beyond predictive performance, I’m interested in model interpretability, robustness across populations, and the implications of using AI to inform consequential clinical decisions.</p>
-    <p>My work and research interests span predictive modelling, explainable AI, model evaluation, and the development of deployable ML applications. I’m equally interested in computer vision, particularly medical imaging, and the potential of deep learning to extract clinically meaningful insights from medical images. More broadly, I’m interested in clinical research, cardiovascular risk assessment, and translating AI methods into practical, responsible healthcare applications.</p>
-    <p>Longer term, I hope to pursue a physician-scientist career that brings clinical practice, research, and engineering together.</p>
+    <p class="lead">Software defined the last decade. Data determines the next.</p>
+    <p>I’m a machine learning engineer and researcher building systems that are useful, interpretable, and dependable in practice. My focus is applied machine learning, predictive modelling, and computer vision, along with the engineering around them: rigorous evaluation, retrieval-augmented generation and LLM integration, API development, and deployment. I care most about whether a model holds up beyond its training data, and my background in medicine and clinical research shapes how I approach high-stakes problems.</p>
+    <p>Open to ML engineering opportunities and research collaborations in applied AI/ML and computer vision.</p>
   </div>
 </section>
 
