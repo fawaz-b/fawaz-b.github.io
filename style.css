@@ -69,3 +69,12 @@ nav{gap:20px}
 .entry figure img{display:block;width:100%;height:auto;border:1px solid var(--rule)}
 .entry figcaption{margin-top:10px;font-size:14px;color:var(--mute)}
 @media(max-width:380px){nav{gap:8px 18px}.wrap{padding-left:20px;padding-right:20px}}
+.research figure {
+  max-width: 520px;
+  margin: 28px 0 16px;
+}
+.research figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
